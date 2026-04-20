@@ -1,8 +1,3 @@
-// 1. Take input from user
-// 2. Store input in variable
-// 3. Compare gathered input against CPU answer
-// 4. Print results of win or loss
-
 let humanScore = 0;
 let compScore = 0;
 
@@ -35,35 +30,44 @@ function getHumanChoice() {
   } else if (userChoice === "paper") {
     console.log("You chose Paper!");
     return "paper";
-  } else {
-    alert("Please reload the page to try again! Id10+ error");
   }
 }
 
 function playRound(compChoice, humanChoice) {
-  if (compSelection === humanSelection) {
+  if (compChoice === humanChoice) {
     console.log("It's a tie!");
-  } else if (compSelection === "rock" && humanSelection === "scissors") {
+  } else if (compChoice === "rock" && humanChoice === "scissors") {
     console.log("Rock beats scissors, You lose!");
     ++compScore;
-  } else if (compSelection === "scissors" && humanSelection === "rock") {
+  } else if (compChoice === "scissors" && humanChoice === "rock") {
     console.log("Rock beats scissors, You win!");
     ++humanScore;
-  } else if (compSelection === "paper" && humanSelection === "Rock") {
+  } else if (compChoice === "paper" && humanChoice === "rock") {
+    console.log("Paper beats rock, You lose!");
+    ++compScore;
+  } else if (compChoice === "rock" && humanChoice === "paper") {
     console.log("Paper beats rock, You Win!");
     ++humanScore;
-  } else if (compSelection === "rock" && humanSelection === "paper") {
-    console.log("Paper beats rock, You Win!");
-    ++humanScore;
-  } else if (compSelection === "scissors" && humanSelection === "paper") {
+  } else if (compChoice === "scissors" && humanChoice === "paper") {
     console.log("Scissors beats paper, You lose!");
     ++compScore;
-  } else if (compSelection === "paper" && humanSelection === "scissors") {
+  } else if (compChoice === "paper" && humanChoice === "scissors") {
     console.log("Scissors beats paper, You Win!");
     ++humanScore;
   }
 }
-const compSelection = getComputerChoice();
-const humanSelection = getHumanChoice();
 
-playRound(humanSelection, compSelection);
+function playGame() {
+  for (let i = 0; i < 5; i++) {
+    playRound(getComputerChoice(), getHumanChoice());
+  }
+  if (humanScore > compScore) {
+    console.log(`You won: ${humanScore} : ${compScore}`);
+  } else if (humanScore === compScore) {
+    console.log(`You Tied: ${humanScore} : ${compScore}`);
+  } else {
+    console.log(`You lost: ${humanScore} : ${compScore}`);
+  }
+}
+
+playGame();
