@@ -83,17 +83,4 @@ function displayScores() {
   displayHumanScore.textContent = ` Your Score: ${humanScore}`;
 }
 
-// function playGame() {
-//   for (let i = 0; i < 5; i++) {
-//     playRound(getComputerChoice(), getHumanChoice());
-//   }
-//   if (humanScore > compScore) {
-//     console.log(`You won: ${humanScore} : ${compScore}`);
-//   } else if (humanScore === compScore) {
-//     console.log(`You Tied: ${humanScore} : ${compScore}`);
-//   } else {
-//     console.log(`You lost: ${humanScore} : ${compScore}`);
-//   }
-// }
-
 getHumanChoice();
